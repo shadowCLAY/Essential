@@ -1,0 +1,52 @@
+        organisations > users
+            user
+               email
+               password
+               organisation_id
+
+            user.organisation
+               Organisation.find(organisation_id)
+
+Giai quyet:
+                          user%5Busername%5D=user3&user%5Bpassword%5D=user3&submit=Submit+Query
+      
+add paramater "Organisation_id" > &user%5BOrganisation_id%5D=1
+
+
+
+Trong bài tập này, bạn có thể đăng ký một tài khoản. 
+Tuy nhiên, bạn sẽ không phải là thành viên của một tổ chức. 
+Mục tiêu là tham gia tổ chức Tổ chức #1
+
+Để làm như vậy, bạn sẽ cần thiết lập tổ chức của mình bằng cách sử dụng phân công hàng loạt.
+
+
+
+Theo quy ước (có thể được thay đổi theo chương trình) 
+khi một nhà phát triển sử dụng ActiveRecord (trình ánh xạ dữ liệu phổ biến nhất của Ruby-on-Rails)
+và một lớp `O1rganisation` có nhiều` U1ser`, mối quan hệ được quản lý bằng cách sử dụng trường `Organisation_id` bên trong Lớp `U1ser`:
+
+The following code is used in Ruby:
+
+              class User < ActiveRecord::Base
+                belongs_to :organisation
+              end
+
+              class Organisation < ActiveRecord::Base
+                has_many :users
+              end
+
+
+
+Bạn có thể đoán thực tế là `or1ganisation` được sử dụng bằng cách truy cập trang tổ chức và xem URL. 
+Bạn sẽ thấy rằng lớp có thể được đặt tên là `Or1ganisation`. Và do đó, khóa trong bảng `us1ers` có khả năng là`Organisation_id`.
+
+
+
+
+Ruby-on-Rails thực thi "quy ước" đối với "cấu hình", điều này thực sự giúp đoán tên lớp và tên thuộc tính ...
+
+Sử dụng thông tin này, bạn sẽ có thể thiết lập tổ chức hiện tại của mình để có quyền truy cập vào "khóa".
+
+
+
