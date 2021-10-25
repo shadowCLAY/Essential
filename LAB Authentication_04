@@ -1,0 +1,52 @@
+Giai quyet: 
+          POST /signup HTTP/1.1
+          Host: ptl-8d9f2983-5cdf1874.libcurl.so
+
+          user%5Busername%5D=user&user%5Bpassword%5D=user&submit=Submit+Query
+
+username to > admin > KEY
+
+                                                                      LAB
+
+Khi mọi người bắt đầu xây dựng trang web với cơ sở dữ liệu để lưu trữ thông tin, 
+họ phải thực hiện rất nhiều SQL theo cách thủ công. 
+
+Rất ít người nhận ra rằng đó không phải là giải pháp tốt nhất và bắt đầu làm việc trên các giải pháp thay thế thông minh hơn và 
+bắt đầu xây dựng Ánh xạ quan hệ đối tượng (ORM) để dễ dàng truy vấn cơ sở dữ liệu mà không cần bất kỳ kiến ​​thức SQL nào. 
+
+Ví dụ, trong Ruby (sử dụng ActiveRecord), bạn có thể làm những việc như:
+                      @user = User.find_by_name('pentesterlab')
+Điều này sẽ tự động tạo và thực thi truy vấn và lấy kết quả trong một đối tượng USER.
+
+
+
+Một cách sử dụng thực sự tiện dụng khác là tự động tạo và cập nhật một đối tượng từ một hàm băm:
+                      @user = User.create(myhash) 
+                      [...]
+                      @user.update_attributes(anotherhash)
+
+
+
+Thật không may, tính năng hữu ích này đi kèm với giá bảo mật, 
+nếu nhà phát triển không đảm bảo chính xác rằng các thuộc tính của đối tượng @user được bảo vệ, 
+kẻ tấn công có thể tùy ý ghi đè bất kỳ thuộc tính nào trong số này. 
+Trong phần này, chúng ta sẽ thấy một số ví dụ phổ biến về các loại vấn đề này: Phân công hàng loạt (Mass-Assignment)
+
+
+
+In this example, you can register a user. The application has two levels of privileges:
+
+                      User.
+                      Admin.
+
+
+
+Đặc quyền quản trị viên được đặt bằng thuộc tính `admin` trên đối tượng` user`. 
+Nếu bạn xem xét kỹ định dạng được sử dụng bởi ứng dụng web: `us1er [us1ername]` và `us1er [pa1ssword]`, 
+bạn sẽ có thể tìm ra cách để có được quyền truy cập `admin`. Có thể sử dụng ba phương pháp:
+
+
+                      
+                      Modify the page directly using a browser extension.
+                      Save the page and modify offline to create a page that will send the right payload to the right URL.
+                      Use a proxy to intercept the legitimate request and add your parameter (fastest option).
