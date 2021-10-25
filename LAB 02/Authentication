@@ -1,0 +1,9 @@
+This example is similar to the previous example. 
+As soon as you receive a cookie from an application, it is always good to see what it looks like. 
+Try to crack it using a password cracker or try to just Google it. 
+From that you should be able to generate a valid cookie for the user admin.
+
+
+Ví dụ này tương tự như ví dụ trước. Ngay sau khi bạn nhận được một cookie từ một ứng dụng, 
+luôn luôn tốt để xem nó trông như thế nào. Hãy thử bẻ khóa nó bằng cách sử dụng một trình bẻ khóa mật khẩu hoặc 
+chỉ thử dùng Google để bẻ khóa nó. Từ đó, bạn sẽ có thể tạo một cookie hợp lệ cho quản trị viên người dùng.
