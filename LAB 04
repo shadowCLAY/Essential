@@ -1,0 +1,14 @@
+To remediate the previous issue, the developer decided to use a case sensitive comparison during users' creation. 
+This check can also be bypassed based on the way MySQL performs string comparison: 
+MySQL ignores trailing spaces (i.e.: pentesterlab and pentesterlab[space] are equals). 
+Using the same method as above, you should be able to pretend to be logged in as the user admin.
+
+A good way to prevent this issue is to tell the database that the username is a PRIMARY KEY. 
+This method is, for example, used in Tomcat documentation to use a SQL backend as a Realm.
+
+
+
+Việc kiểm tra này cũng có thể được bỏ qua dựa trên cách MySQL thực hiện so sánh chuỗi: MySQL bỏ qua các dấu cách ở cuối 
+(tức là: pentesterlab và pentesterlab [dấu cách] là bằng nhau). 
+Sử dụng phương pháp tương tự như trên, bạn sẽ có thể giả vờ đăng nhập với tư cách quản trị viên người dùng.
+
