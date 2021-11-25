@@ -1,0 +1,17 @@
+Chúng ta đã nói trước đó về các công cụ sửa đổi biểu thức chính quy với biểu thức chính quy nhiều dòng. 
+Một công cụ sửa đổi rất nguy hiểm khác tồn tại trong PHP: PCRE_REPLACE_EVAL (/e)
+Công cụ sửa đổi này sẽ khiến hàm preg_replace đánh giá giá trị mới  là mã PHP, trước khi thực hiện thay thế.
+
+
+PCRE_REPLACE_EVAL không được dùng nữa kể từ PHP 5.5.0
+
+
+
+Tại đây, bạn sẽ cần thay đổi mẫu bằng cách thêm sửa đổi /e. Khi bạn đã thêm công cụ sửa đổi này, bạn sẽ nhận được thông báo:
+Notice: Use of undefined constant hacker - assumed 'hacker' in /var/www/codeexec/example3.php(3) : regexp code on line 1
+
+Hàm preg_replace cố gắng đánh giá giá trị của hacker là một hằng số nhưng nó không được định nghĩa và bạn nhận được thông báo này.
+
+Bạn có thể dễ dàng thay thế hacker bằng một lệnh gọi đến hàm phpinfo() để nhận được kết quả hiển thị. 
+Khi bạn có thể thấy kết quả của hàm phpinfo, you can use the function 'system' to run any command.
+
